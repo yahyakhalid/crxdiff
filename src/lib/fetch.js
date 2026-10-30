@@ -17,18 +17,20 @@ export function updateUrl(id, prodversion) {
 
 /**
  * @param {string} id
- * @param {{prodversion: string, fetchImpl?: typeof fetch, maxBytes?: number, signal?: AbortSignal}} opts
+ * @param {{prodversion: string, fetchImpl?: typeof fetch, maxBytes?: number, timeoutMs?: number}} opts
  * @returns {Promise<Uint8Array>}
  */
 export async function downloadPackage(id, opts) {
   const fetchImpl = opts.fetchImpl || fetch;
   const maxBytes = opts.maxBytes || MAX_DOWNLOAD_BYTES;
-  const res = await fetchImpl(updateUrl(id, opts.prodversion), {
-    redirect: 'follow',
-    credentials: 'omit',
-    cache: 'no-store',
-    signal: opts.signal,
-  });
+  // A stalled connection must not freeze the whole check run.
+  const signal = opts.timeoutMs ? AbortSignal.timeout(opts.timeoutMs) : undefined;
+  let res;
+  try {
+    res = await fetchImpl(updateUrl(id, opts.prodversion), { redirect: 'follow', credentials: 'omit', cache: 'no-store', signal });
+  } catch (e) {
+    throw new PackageError(e && e.name === 'TimeoutError' ? 'download-timeout' : 'network', 'Download failed');
+  }
   let host = '';
   try {
     host = new URL(res.url).host;
@@ -51,7 +53,13 @@ export async function downloadPackage(id, opts) {
   const chunks = [];
   let total = 0;
   for (;;) {
-    const { done, value } = await reader.read();
+    let chunk;
+    try {
+      chunk = await reader.read();
+    } catch (e) {
+      throw new PackageError(e && e.name === 'TimeoutError' ? 'download-timeout' : 'network', 'Download failed');
+    }
+    const { done, value } = chunk;
     if (done) break;
     total += value.length;
     if (total > maxBytes) {

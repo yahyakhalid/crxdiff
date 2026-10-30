@@ -4,6 +4,7 @@
 import { createMonitor } from './lib/monitor.js';
 import { downloadPackage } from './lib/fetch.js';
 import { buildSnapshot } from './lib/snapshot.js';
+import { parseCrx } from './lib/crx.js';
 import { getSettings, getReportIndex, unreviewedCount, patchReport, getReport } from './lib/state.js';
 
 const ALARM = 'crxdiff-check';
@@ -17,15 +18,15 @@ const monitor = createMonitor({
   storage: chrome.storage.local,
   management: chrome.management,
   selfId: chrome.runtime.id,
-  download: (id) => downloadPackage(id, { prodversion: chromeVersion() }),
+  download: (id) => downloadPackage(id, { prodversion: chromeVersion(), timeoutMs: 120000 }),
   onReport: async (report, ext, settings) => {
     await refreshBadge();
     const worth = report.level === 'high' || report.level === 'medium';
     if (!settings.notify || !worth) return;
-    const t = chrome.i18n.getMessage(report.level === 'high' ? 'notif_title_high' : 'notif_title_medium').replace('{1}', report.name);
+    const t = chrome.i18n.getMessage(report.level === 'high' ? 'notif_title_high' : 'notif_title_medium').split('{1}').join(report.name);
     const first = report.findings.find((f) => f.points > 0);
     let body = `${report.fromVersion} → ${report.toVersion}`;
-    if (first) body += ` · ${chrome.i18n.getMessage(first.code).replace('{1}', first.params[0] || '')}`;
+    if (first) body += ` · ${chrome.i18n.getMessage(first.code).split('{1}').join(first.params[0] || '')}`;
     if (report.autoDisabled) body += ` · ${chrome.i18n.getMessage('notif_disabled')}`;
     const buttons = [{ title: chrome.i18n.getMessage('notif_open') }];
     if (report.autoDisabled) buttons.push({ title: chrome.i18n.getMessage('notif_reenable') });
@@ -46,9 +47,10 @@ const monitor = createMonitor({
 globalThis.crxdiffDebug = {
   chromeVersion,
   async snapshot(id) {
-    const bytes = await downloadPackage(id, { prodversion: chromeVersion() });
+    const bytes = await downloadPackage(id, { prodversion: chromeVersion(), timeoutMs: 120000 });
     const snap = await buildSnapshot(bytes, { id });
-    return { id: snap.id, version: snap.version, format: snap.format, files: snap.files.length, bytes: bytes.length, totalSize: snap.totalSize, ms: snap.ms };
+    const crxId = parseCrx(bytes).crxId;
+    return { id: snap.id, crxIdMatches: crxId === id, version: snap.version, format: snap.format, files: snap.files.length, bytes: bytes.length, totalSize: snap.totalSize, ms: snap.ms };
   },
 };
 

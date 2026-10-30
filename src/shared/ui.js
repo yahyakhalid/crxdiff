@@ -8,12 +8,10 @@ const numLocale = uiLang.startsWith('ar') ? uiLang + '-u-nu-latn' : uiLang;
 
 export function t(key, ...params) {
   if (typeof key !== 'string' || !/^[A-Za-z0-9_@]+$/.test(key)) return '';
-  let s = chrome.i18n.getMessage(key);
+  const s = chrome.i18n.getMessage(key);
   if (!s) return '';
-  params.forEach((p, i) => {
-    s = s.split(`{${i + 1}}`).join(String(p));
-  });
-  return s;
+  // One pass, so a parameter that itself contains "{2}" is never substituted again.
+  return s.replace(/\{(\d)\}/g, (m, n) => (n >= 1 && n <= params.length ? String(params[n - 1]) : m));
 }
 
 /** Sets lang/dir and fills every [data-i18n] element. */
@@ -27,7 +25,7 @@ export function applyI18n(root = document) {
   if (title) document.title = t(title.dataset.i18n);
 }
 
-const ATTRS = new Set(['class', 'href', 'src', 'alt', 'title', 'id', 'for', 'type', 'role', 'dir', 'lang', 'value', 'name', 'aria-label', 'aria-live', 'aria-expanded', 'aria-controls', 'aria-describedby', 'aria-hidden', 'tabindex', 'width', 'height', 'datetime', 'scope', 'colspan', 'hidden']);
+const ATTRS = new Set(['class', 'href', 'target', 'rel', 'src', 'alt', 'title', 'id', 'for', 'type', 'role', 'dir', 'lang', 'value', 'name', 'aria-label', 'aria-live', 'aria-expanded', 'aria-controls', 'aria-describedby', 'aria-hidden', 'tabindex', 'width', 'height', 'datetime', 'scope', 'colspan', 'hidden']);
 
 /** Minimal element builder. Strings become text nodes; attributes are allow-listed. */
 export function h(tag, attrs, ...children) {

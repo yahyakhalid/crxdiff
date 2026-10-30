@@ -106,6 +106,9 @@ export const POINTS = Object.freeze({
   wasm: 10,
   sizeJump: 5,
   remoteCodeCombo: 15,
+  zipTricks: 30,
+  unscannedCode: 20,
+  unanalysable: 50,
 });
 
 /** Points for a finding, mapped to a display severity. */

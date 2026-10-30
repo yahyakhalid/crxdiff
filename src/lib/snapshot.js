@@ -7,7 +7,12 @@ import { listZip, readEntry, DEFAULT_LIMITS } from './zip.js';
 import { extractHosts, scanPatterns, codeShape, scanDnrRules, MAX_SCAN_CHARS } from './scan.js';
 
 export const SNAPSHOT_SCHEMA = 1;
-const MAX_MANIFEST_CHARS = 256 * 1024;
+const MAX_MANIFEST_CHARS = 128 * 1024;
+// A stored snapshot larger than this means the package is built to exhaust storage
+// (chrome.storage.local holds about 10 MB in total); it is refused, and an update
+// that cannot be summarised is reported as such (see monitor.js).
+export const MAX_SNAPSHOT_BYTES = 2 * 1024 * 1024;
+const TRICKS = /^path:(duplicate|case-collision|overlap|parent-path|absolute-path|control-chars):/;
 const MAX_HOSTS = 5000;
 const MAX_RULE_FILE_BYTES = 32 * 1024 * 1024;
 const DEFAULT_TIME_BUDGET_MS = 90 * 1000;
@@ -59,20 +64,21 @@ function ruleFilePaths(manifest) {
 export async function buildSnapshot(packageBytes, opts = {}) {
   const started = Date.now();
   const budget = opts.timeBudgetMs || DEFAULT_TIME_BUDGET_MS;
+  const deadline = started + budget;
   const crx = parseCrx(packageBytes, { expectedId: opts.id });
   const limits = { ...DEFAULT_LIMITS, ...(opts.limits || {}) };
   const { entries, warnings } = listZip(crx.zip, limits);
 
   const manifestEntry = entries.find((e) => e.name === 'manifest.json');
   if (!manifestEntry) throw new PackageError('no-manifest', 'Package has no manifest.json');
-  const mRead = readEntry(crx.zip, manifestEntry, limits);
+  const mRead = readEntry(crx.zip, manifestEntry, limits, deadline);
   if (!mRead.data || mRead.data.length > MAX_MANIFEST_CHARS) throw new PackageError('bad-manifest', 'manifest.json could not be read');
   const manifestText = decoder.decode(mRead.data);
   const manifest = parseManifestText(manifestText);
   const rulePaths = new Set(ruleFilePaths(manifest));
 
   const files = [];
-  const hostFiles = new Map(); // host -> first file it was seen in
+  const hostFiles = new Map(); // host -> {file, dense}; a non-dense (code-like) file wins
   const patterns = {}; // id -> {count, files[]}
   const dnrHeaders = {}; // "header:op" -> count
   const denseFiles = [];
@@ -82,7 +88,7 @@ export async function buildSnapshot(packageBytes, opts = {}) {
     if (Date.now() - started > budget) throw new PackageError('timeout', 'Analysis took too long');
     totalSize += entry.size;
     const rec = { path: entry.name, size: entry.size };
-    const r = readEntry(crx.zip, entry, limits);
+    const r = readEntry(crx.zip, entry, limits, deadline);
     if (!r.data) {
       rec.skipped = r.skipped;
       warnings.push(`file:${r.skipped}:${entry.name}`);
@@ -97,9 +103,11 @@ export async function buildSnapshot(packageBytes, opts = {}) {
     if (CODE_EXT.test(entry.name)) {
       const text = decode(r.data);
       const fileHosts = extractHosts(text);
-      if (fileHosts.size >= DENSE_FILE_HOSTS) denseFiles.push(entry.name);
+      const dense = fileHosts.size >= DENSE_FILE_HOSTS;
+      if (dense) denseFiles.push(entry.name);
       for (const h of fileHosts) {
-        if (!hostFiles.has(h) && hostFiles.size < MAX_HOSTS) hostFiles.set(h, entry.name);
+        const prev = hostFiles.get(h);
+        if (prev ? prev.dense && !dense : hostFiles.size < MAX_HOSTS) hostFiles.set(h, { file: entry.name, dense });
       }
       const hits = scanPatterns(text);
       for (const id of Object.keys(hits)) {
@@ -129,9 +137,9 @@ export async function buildSnapshot(packageBytes, opts = {}) {
   files.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
   const hosts = [...hostFiles.keys()].sort();
   const hostSources = {};
-  for (const h of hosts) hostSources[h] = hostFiles.get(h);
+  for (const h of hosts) hostSources[h] = hostFiles.get(h).file;
 
-  return {
+  const snap = {
     schema: SNAPSHOT_SCHEMA,
     id: opts.id || crx.crxId || null,
     version: typeof manifest.version === 'string' ? manifest.version : String(manifest.version ?? ''),
@@ -146,9 +154,12 @@ export async function buildSnapshot(packageBytes, opts = {}) {
     denseFiles: denseFiles.sort(),
     patterns,
     dnrHeaders,
+    zipTricks: warnings.filter((w) => TRICKS.test(w)).slice(0, 50),
     warnings: warnings.slice(0, 200),
     ms: Date.now() - started,
   };
+  if (JSON.stringify(snap).length > MAX_SNAPSHOT_BYTES) throw new PackageError('summary-too-large', 'Package summary is too large to store');
+  return snap;
 }
 
 /** Chrome-style version comparison: dotted integers. */

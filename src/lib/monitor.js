@@ -3,10 +3,15 @@
 
 import { buildSnapshot, baselineStatus, compareVersions } from './snapshot.js';
 import { compareSnapshots, compareManagementInfo, managementAccess, isStoreUpdateUrl } from './diff.js';
-import { levelFor } from './risk.js';
+import { levelFor, POINTS, severityFor } from './risk.js';
 import { isExtensionId } from './crx.js';
 
 const MAX_REPORTS = 100;
+
+// Errors caused by the package itself (its size, structure or content), as opposed to
+// the network. An update whose package hits one of these is reported, not skipped:
+// otherwise a malicious update could avoid analysis just by being unreadable.
+export const CONTENT_ERRORS = new Set(['too-large', 'too-many-files', 'zip64', 'bad-zip', 'bad-header', 'not-crx', 'unsupported-crx', 'truncated', 'no-manifest', 'bad-manifest', 'timeout', 'summary-too-large', 'id-mismatch']);
 
 /** Why an installed item is not checked, or null if it is. */
 export function notCheckedReason(ext, { selfId, ignored = [] } = {}) {
@@ -67,8 +72,22 @@ export function createMonitor(deps) {
     };
   }
 
+  // Writes; if storage is full, drops the older half of the reports and tries once more.
+  async function put(obj) {
+    try {
+      await st.set(obj);
+    } catch (e) {
+      const index = (await getOne('reportIndex')) || [];
+      if (index.length < 2) throw e;
+      const keep = Math.floor(index.length / 2);
+      await st.remove(index.slice(keep).map((r) => 'report:' + r.rid));
+      await st.set({ reportIndex: index.slice(0, keep) });
+      await st.set(obj);
+    }
+  }
+
   async function saveRecord(rec) {
-    await st.set({ ['ext:' + rec.id]: rec });
+    await put({ ['ext:' + rec.id]: rec });
   }
 
   async function addReport(report) {
@@ -88,7 +107,7 @@ export function createMonitor(deps) {
       top: report.findings.filter((f) => f.points > 0).slice(0, 2),
     });
     const drop = index.slice(MAX_REPORTS).map((r) => 'report:' + r.rid);
-    await st.set({ ['report:' + report.rid]: report, reportIndex: index.slice(0, MAX_REPORTS) });
+    await put({ ['report:' + report.rid]: report, reportIndex: index.slice(0, MAX_REPORTS) });
     if (drop.length) await st.remove(drop);
   }
 
@@ -111,8 +130,12 @@ export function createMonitor(deps) {
         }
       }
     }
-    await addReport(report);
-    if (deps.onReport) await deps.onReport(report, ext, settings);
+    try {
+      await addReport(report);
+    } finally {
+      // The user hears about it even if the report could not be stored.
+      if (deps.onReport) await deps.onReport(report, ext, settings);
+    }
     return report;
   }
 
@@ -186,7 +209,7 @@ export function createMonitor(deps) {
       rec.status = status === 'matched' ? 'watching' : 'baseline-ahead';
       rec.baselineVersion = snap.version;
       rec.baselineAt = snap.takenAt;
-      await st.set({ ['ext:' + ext.id]: rec, ['snap:' + ext.id]: snap });
+      await put({ ['ext:' + ext.id]: rec, ['snap:' + ext.id]: snap });
       return null;
     }
 
@@ -209,10 +232,22 @@ export function createMonitor(deps) {
     try {
       snap = await snapshotOf(ext);
     } catch (e) {
-      rec.status = e && e.code === 'not-in-store' ? 'unavailable' : 'error';
-      rec.lastError = (e && e.code) || 'error';
+      const code = (e && e.code) || 'error';
+      rec.status = code === 'not-in-store' ? 'unavailable' : 'error';
+      rec.lastError = code;
+      if (!CONTENT_ERRORS.has(code)) {
+        await saveRecord(rec);
+        return null; // network trouble: installedVersion is left alone so the next run retries.
+      }
+      // Fail closed: the new package could not be analysed, so say so loudly. The old
+      // baseline is kept for the next update.
+      const report = partialReport(ext, rec, 'n_unanalysable', [code]);
+      report.findings.unshift({ code: 'f_unanalysable', points: POINTS.unanalysable, severity: severityFor(POINTS.unanalysable), params: [code] });
+      report.score += POINTS.unanalysable;
+      report.level = levelFor(report.score);
+      Object.assign(rec, { installedVersion: ext.version, mgmt: managementInfo(ext) });
       await saveRecord(rec);
-      return null; // installedVersion is left alone so the next run retries.
+      return finishReport(report, ext, settings);
     }
     const status = baselineStatus(snap.version, ext.version);
     if (status === 'store-behind') {
@@ -238,7 +273,7 @@ export function createMonitor(deps) {
       storeVersion: snap.version,
     });
     delete rec.lastError;
-    await st.set({ ['ext:' + ext.id]: rec, ['snap:' + ext.id]: snap });
+    await put({ ['ext:' + ext.id]: rec, ['snap:' + ext.id]: snap });
     return finishReport(report, ext, settings);
   }
 

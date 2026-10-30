@@ -640,5 +640,26 @@
   },
   "col_file": {
     "message": "First seen in"
+  },
+  "f_unanalysable": {
+    "message": "crxdiff could not analyse this update"
+  },
+  "f_unanalysable_why": {
+    "message": "The new package was refused while unpacking ({1}). Packages built to dodge analysis this way are treated as high risk; only the permission changes Chrome reports are shown."
+  },
+  "n_unanalysable": {
+    "message": "The package could not be analysed ({1}), so file, site and code checks are missing from this report."
+  },
+  "f_zip_tricks": {
+    "message": "Unusual package structure: {1}"
+  },
+  "f_zip_tricks_why": {
+    "message": "The same file name twice, names that differ only in letter case, entries that share data, or paths that leave the folder. Normal build tools do not produce these; they can make a checker read a different file from the one Chrome installs."
+  },
+  "f_unscanned_code": {
+    "message": "Code files that could not be read in full: {1}"
+  },
+  "f_unscanned_code_why": {
+    "message": "These scripts are too large or too compressed to scan safely, so anything inside them was not checked."
   }
 }

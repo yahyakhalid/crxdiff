@@ -4,7 +4,8 @@
 import { siteOf } from './scan.js';
 import { PATTERN_POINTS, POINTS, permissionInfo, levelFor, severityFor } from './risk.js';
 
-const MAX_LIST = 2000;
+const MAX_LIST = 300;
+const CODE_FILE = /\.(?:m?js|cjs|html?|xhtml)$/i;
 const MAX_DIFF_LINES = 4000;
 
 const strs = (v) => (Array.isArray(v) ? v.filter((x) => typeof x === 'string') : []);
@@ -319,6 +320,17 @@ export function compareSnapshots(oldSnap, newSnap) {
   if (newWasm.length && !(oldSnap.files || []).some((f) => f.wasm)) findings.push(finding('f_wasm_new', POINTS.wasm, [newWasm.length], newWasm));
   const newMin = filesAdded.filter((f) => f.minified && !f.obfuscated).map((f) => f.path);
   if (newMin.length) findings.push(finding('f_minified_new', 0, [newMin.length], newMin));
+
+  // ZIP tricks: the same name twice, names that differ only in case, entries that share
+  // data, or paths that climb out of the folder. Real build tools do not produce these.
+  const oldTricks = new Set(oldSnap.zipTricks || []);
+  const tricks = (newSnap.zipTricks || []).filter((w) => !oldTricks.has(w));
+  if (tricks.length) findings.push(finding('f_zip_tricks', POINTS.zipTricks, [tricks.length], tricks.map((w) => w.slice(5))));
+
+  // Code that could not be read in full gets points: hiding a payload behind a size or
+  // compression limit must not make an update look clean.
+  const unscanned = [...filesAdded, ...filesChanged].filter((f) => CODE_FILE.test(f.path) && (f.skipped || f.truncated)).map((f) => f.path);
+  if (unscanned.length) findings.push(finding('f_unscanned_code', POINTS.unscannedCode, [unscanned.length], unscanned));
 
   const oldTotal = oldSnap.totalSize || 0;
   const newTotal = newSnap.totalSize || 0;
