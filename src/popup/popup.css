@@ -1,0 +1,62 @@
+body { width: 390px; min-height: 220px; }
+
+.mast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--card);
+}
+.logo { width: 32px; height: 32px; border-radius: 7px; flex: none; }
+.mast-text { flex: 1; min-width: 0; }
+.wordmark { margin: 0; font: 700 19px/1.1 var(--mono); letter-spacing: -0.5px; }
+.status { margin: 2px 0 0; }
+
+.tally {
+  list-style: none;
+  margin: 0;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--rule);
+}
+.tally li { white-space: nowrap; }
+.tally b { font-family: var(--mono); font-size: 14px; }
+.tally .hot b { background: var(--marker); color: var(--marker-ink); padding: 0 4px; border-radius: 3px; }
+
+main { padding: 12px 16px 4px; }
+.section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
+:lang(ar) .section-title { text-transform: none; letter-spacing: 0; font-size: 13px; }
+
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-inline-start: 4px solid var(--none);
+  border-radius: var(--radius);
+}
+.card.high { border-inline-start-color: var(--high); }
+.card.medium { border-inline-start-color: var(--medium); }
+.card.low { border-inline-start-color: var(--low); }
+.card.reviewed { opacity: 0.75; }
+.card .ext-icon { grid-row: span 3; margin-top: 2px; }
+.card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; min-width: 0; }
+.card-name { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 12.5px; }
+.card-reason { margin: 0; font-size: 13px; color: var(--ink-2); }
+.card-reason .pts { font-family: var(--mono); color: var(--muted); direction: ltr; unicode-bidi: isolate; }
+.card a { font-size: 13px; font-weight: 600; }
+.off { color: var(--high); font-weight: 600; font-size: 12.5px; }
+
+.empty-state { background: var(--card); border: 1px dashed var(--rule-strong); border-radius: var(--radius); padding: 12px 14px; }
+.empty-title { margin: 0 0 4px; font-weight: 700; }
+.empty-state p { margin: 0; }
+
+.foot { display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px 14px; font-size: 13.5px; font-weight: 600; }

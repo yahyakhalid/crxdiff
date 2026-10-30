@@ -1,0 +1,19 @@
+.narrow { max-width: 760px; }
+.saved { min-height: 1.5em; margin: -8px 0 0; color: var(--low); font-weight: 600; font-size: 14px; }
+
+.field { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed var(--rule-strong); }
+.field label { font-weight: 600; }
+.field input[type="checkbox"] { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--ink); flex: none; }
+.select-field { flex-wrap: wrap; align-items: center; }
+.select-field .help { flex-basis: 100%; }
+select { font: inherit; padding: 5px 10px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--card); color: var(--ink); }
+.help { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+.ignore { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); }
+.ignore li { display: flex; gap: 10px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+.ignore li:last-child { border-bottom: none; }
+.ignore input { width: 18px; height: 18px; accent-color: var(--ink); flex: none; }
+.ignore label { display: flex; gap: 10px; align-items: center; min-width: 0; overflow-wrap: anywhere; cursor: pointer; }
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.privacy-title { font-size: 16px; margin: 22px 0 4px; }

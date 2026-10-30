@@ -1,0 +1,644 @@
+{
+  "extName": {
+    "message": "crxdiff: what changed in your extensions"
+  },
+  "extDescription": {
+    "message": "Shows what each update to your extensions changed: new permissions, new sites, risky code. Nothing leaves your device."
+  },
+  "actionTitle": {
+    "message": "crxdiff: what changed in your extensions"
+  },
+  "level_high": {
+    "message": "High risk"
+  },
+  "level_medium": {
+    "message": "Worth a look"
+  },
+  "level_low": {
+    "message": "Low"
+  },
+  "level_none": {
+    "message": "Nothing notable"
+  },
+  "level_high_hint": {
+    "message": "This update made changes that malicious updates often make. Review it before you keep using the extension."
+  },
+  "level_medium_hint": {
+    "message": "This update gives the extension more reach. That is often fine; check that it fits what the extension does."
+  },
+  "level_low_hint": {
+    "message": "Small changes that are rarely a problem on their own."
+  },
+  "level_none_hint": {
+    "message": "The code changed, but nothing on crxdiff’s watch list did."
+  },
+  "popup_watching": {
+    "message": "Watching {1} extensions"
+  },
+  "popup_lastCheck": {
+    "message": "Last check {1}"
+  },
+  "popup_never": {
+    "message": "No check yet"
+  },
+  "popup_checkNow": {
+    "message": "Check now"
+  },
+  "popup_checking": {
+    "message": "Checking…"
+  },
+  "popup_checkDone": {
+    "message": "Check finished"
+  },
+  "popup_recent": {
+    "message": "Recent updates"
+  },
+  "popup_empty_title": {
+    "message": "No updates yet"
+  },
+  "popup_empty_body": {
+    "message": "crxdiff saved a baseline of each extension. When one updates, you will see here what changed."
+  },
+  "popup_toReview": {
+    "message": "To review: {1}"
+  },
+  "popup_notChecked": {
+    "message": "Not checked: {1}"
+  },
+  "popup_allReports": {
+    "message": "Reports and extensions"
+  },
+  "popup_settings": {
+    "message": "Settings"
+  },
+  "open_report": {
+    "message": "Open report"
+  },
+  "auto_disabled": {
+    "message": "Turned off by crxdiff"
+  },
+  "reenable": {
+    "message": "Turn it back on"
+  },
+  "reenabled": {
+    "message": "Turned back on"
+  },
+  "mark_reviewed": {
+    "message": "Mark as reviewed"
+  },
+  "reviewed": {
+    "message": "Reviewed"
+  },
+  "points": {
+    "message": "{1} pts"
+  },
+  "partial_report": {
+    "message": "Permissions only"
+  },
+  "version_label": {
+    "message": "Version"
+  },
+  "from_to_label": {
+    "message": "from {1} to {2}"
+  },
+  "report_doc_title": {
+    "message": "Update report · crxdiff"
+  },
+  "report_why": {
+    "message": "Why this level"
+  },
+  "report_why_none": {
+    "message": "Nothing on the watch list changed."
+  },
+  "report_total": {
+    "message": "Total"
+  },
+  "report_scale": {
+    "message": "20 points or more is “worth a look”, 50 or more is “high risk”."
+  },
+  "report_access": {
+    "message": "Permissions and access"
+  },
+  "report_access_none": {
+    "message": "No change to permissions or site access."
+  },
+  "report_sites": {
+    "message": "Sites named in the code"
+  },
+  "report_sites_none": {
+    "message": "No new sites."
+  },
+  "report_sites_help": {
+    "message": "Hosts in full URLs inside the extension’s scripts and pages that were not there before. A name in the code does not prove the extension connects to it."
+  },
+  "report_site_new": {
+    "message": "new site"
+  },
+  "report_site_known": {
+    "message": "known site"
+  },
+  "report_site_data": {
+    "message": "data file"
+  },
+  "report_code": {
+    "message": "Code patterns"
+  },
+  "report_code_none": {
+    "message": "No risky pattern appeared for the first time."
+  },
+  "report_files": {
+    "message": "Files"
+  },
+  "report_files_summary": {
+    "message": "{1} added, {2} removed, {3} changed, {4} unchanged"
+  },
+  "report_manifest": {
+    "message": "manifest.json"
+  },
+  "report_manifest_same": {
+    "message": "manifest.json did not change."
+  },
+  "report_notes": {
+    "message": "Notes"
+  },
+  "report_size": {
+    "message": "Unpacked size"
+  },
+  "report_files_count": {
+    "message": "Files"
+  },
+  "report_detected": {
+    "message": "Detected {1}"
+  },
+  "report_back": {
+    "message": "All reports"
+  },
+  "report_not_found": {
+    "message": "This report no longer exists."
+  },
+  "report_show_all": {
+    "message": "Show all {1}"
+  },
+  "report_reenable_failed": {
+    "message": "Chrome did not allow turning it back on: {1}"
+  },
+  "file_added": {
+    "message": "added"
+  },
+  "file_removed": {
+    "message": "removed"
+  },
+  "file_changed": {
+    "message": "changed"
+  },
+  "file_minified": {
+    "message": "minified"
+  },
+  "file_obfuscated": {
+    "message": "looks obfuscated"
+  },
+  "ov_doc_title": {
+    "message": "Reports and extensions · crxdiff"
+  },
+  "ov_title": {
+    "message": "Reports and extensions"
+  },
+  "ov_reports": {
+    "message": "Update reports"
+  },
+  "ov_reports_none": {
+    "message": "No reports yet. crxdiff writes one each time a watched extension updates."
+  },
+  "ov_extensions": {
+    "message": "Your extensions"
+  },
+  "ov_col_ext": {
+    "message": "Extension"
+  },
+  "ov_col_version": {
+    "message": "Version"
+  },
+  "ov_col_status": {
+    "message": "Status"
+  },
+  "ov_extensions_none": {
+    "message": "No other extensions are installed."
+  },
+  "status_watching": {
+    "message": "Watching"
+  },
+  "status_pending": {
+    "message": "Not checked yet"
+  },
+  "status_baseline_ahead": {
+    "message": "Baseline is newer"
+  },
+  "status_baseline_ahead_help": {
+    "message": "The store already serves {1}; you have {2}. When Chrome installs {1}, that update will show permission changes only."
+  },
+  "status_baseline_behind": {
+    "message": "Waiting for a baseline"
+  },
+  "status_baseline_behind_help": {
+    "message": "The store serves {1}, older than your {2}. crxdiff will try again later."
+  },
+  "status_error": {
+    "message": "Download failed"
+  },
+  "status_error_help": {
+    "message": "Error: {1}. crxdiff will try again on the next check."
+  },
+  "status_unavailable": {
+    "message": "Not in the Web Store"
+  },
+  "status_unavailable_help": {
+    "message": "The Chrome Web Store no longer serves this extension. Extensions are sometimes removed for breaking store policy."
+  },
+  "status_skipped": {
+    "message": "Not checked"
+  },
+  "r_not_extension": {
+    "message": "Apps and themes are not checked."
+  },
+  "r_unpacked": {
+    "message": "Loaded unpacked (developer mode), so there is no store version to compare."
+  },
+  "r_policy": {
+    "message": "Installed by your organization’s policy."
+  },
+  "r_edge_store": {
+    "message": "From the Microsoft Edge store. Only the Chrome Web Store is supported for now."
+  },
+  "r_self_hosted": {
+    "message": "Updates from its own server ({1}), not from the Chrome Web Store."
+  },
+  "r_sideload": {
+    "message": "Installed by another program on this computer."
+  },
+  "r_other": {
+    "message": "Installed in a way crxdiff cannot check."
+  },
+  "r_ignored": {
+    "message": "On your ignore list."
+  },
+  "n_store_ahead": {
+    "message": "The store already serves {1}, newer than the {2} you have. This report describes {1}, which Chrome will install soon."
+  },
+  "n_no_old_package": {
+    "message": "crxdiff had no package for {1}, so only the permission changes Chrome reports are shown."
+  },
+  "n_store_behind": {
+    "message": "The store serves {1}, older than the installed {2}, so only permission changes are shown."
+  },
+  "n_auto_disabled": {
+    "message": "crxdiff turned this extension off because the update is high risk and automatic turn-off is on in Settings."
+  },
+  "n_auto_disable_failed": {
+    "message": "Automatic turn-off is on, but Chrome does not allow turning this extension off."
+  },
+  "n_warnings": {
+    "message": "The package has unusual entries: {1}"
+  },
+  "f_perm_added_silent": {
+    "message": "New permission, no warning shown: {1}"
+  },
+  "f_perm_added_silent_why": {
+    "message": "Chrome shows no prompt for this permission, so the update installed without asking you."
+  },
+  "f_perm_added_warn": {
+    "message": "New permission: {1}"
+  },
+  "f_perm_added_warn_why": {
+    "message": "Chrome warns about this one and keeps the extension off until you accept it."
+  },
+  "f_perm_added_unknown": {
+    "message": "New permission: {1}"
+  },
+  "f_perm_added_unknown_why": {
+    "message": "crxdiff does not know this permission yet."
+  },
+  "f_perm_removed": {
+    "message": "Permissions removed: {1}"
+  },
+  "f_perm_removed_why": {
+    "message": "Less access than before."
+  },
+  "f_host_added_broad": {
+    "message": "Can now read and change all sites ({1})"
+  },
+  "f_host_added_broad_why": {
+    "message": "Access to every site lets the extension see and change any page, including sign-in pages and forms."
+  },
+  "f_host_added": {
+    "message": "Access to new sites: {1}"
+  },
+  "f_host_added_why": {
+    "message": "The extension can now read and change these sites."
+  },
+  "f_host_removed": {
+    "message": "Site access removed: {1}"
+  },
+  "f_host_removed_why": {
+    "message": "Less access than before."
+  },
+  "f_optional_added": {
+    "message": "New optional permissions: {1}"
+  },
+  "f_optional_added_why": {
+    "message": "The extension may ask you for these later."
+  },
+  "f_match_added_broad": {
+    "message": "Now runs a script on every page ({1})"
+  },
+  "f_match_added_broad_why": {
+    "message": "A content script on all pages can read what you see and type on any site."
+  },
+  "f_match_added": {
+    "message": "Runs scripts on new sites: {1}"
+  },
+  "f_match_added_why": {
+    "message": "Its content scripts now also run on these pages."
+  },
+  "f_main_world": {
+    "message": "A content script now runs inside the page itself"
+  },
+  "f_main_world_why": {
+    "message": "Scripts in the “MAIN” world share the page’s JavaScript instead of running isolated from it."
+  },
+  "f_csp_changed": {
+    "message": "Content Security Policy changed"
+  },
+  "f_csp_changed_why": {
+    "message": "From “{1}” to “{2}”."
+  },
+  "f_csp_unsafe_eval": {
+    "message": "The policy now allows eval"
+  },
+  "f_csp_unsafe_eval_why": {
+    "message": "“unsafe-eval” lets the extension turn text into code while it runs, a common way to run code fetched later."
+  },
+  "f_csp_remote": {
+    "message": "The policy now allows scripts from other servers"
+  },
+  "f_csp_remote_why": {
+    "message": "Scripts loaded from a server can change at any time, without a store update."
+  },
+  "f_update_url_changed": {
+    "message": "Update source changed"
+  },
+  "f_update_url_changed_why": {
+    "message": "From {1} to {2}. An extension that updates from its own server skips store review."
+  },
+  "f_homepage_changed": {
+    "message": "Homepage changed"
+  },
+  "f_homepage_changed_why": {
+    "message": "From {1} to {2}. Sometimes a sign the extension changed hands."
+  },
+  "f_author_changed": {
+    "message": "Author changed"
+  },
+  "f_author_changed_why": {
+    "message": "From {1} to {2}. Sometimes a sign the extension was sold."
+  },
+  "f_name_changed": {
+    "message": "Name changed"
+  },
+  "f_name_changed_why": {
+    "message": "From {1} to {2}."
+  },
+  "f_mv_changed": {
+    "message": "Manifest version changed"
+  },
+  "f_mv_changed_why": {
+    "message": "From {1} to {2}."
+  },
+  "f_externally_connectable": {
+    "message": "Websites or apps can now message it: {1}"
+  },
+  "f_externally_connectable_why": {
+    "message": "The listed sites or extensions can send it messages directly."
+  },
+  "f_dnr_header": {
+    "message": "Removes security headers from websites"
+  },
+  "f_dnr_header_why": {
+    "message": "New network rules remove or replace headers such as Content-Security-Policy, which protect pages from injected code. QuickLens did this in February 2026."
+  },
+  "f_pattern_new": {
+    "message": "New in the code: {1}"
+  },
+  "f_sites_new": {
+    "message": "New sites in the code: {1}"
+  },
+  "f_sites_new_why": {
+    "message": "The scripts now name sites they did not name before. Check that they belong to the developer or to services the extension uses."
+  },
+  "f_sites_new_data": {
+    "message": "New sites in data files: {1}"
+  },
+  "f_sites_new_data_why": {
+    "message": "They appear in files that list many sites, such as filter lists, so they add no points."
+  },
+  "f_remote_combo": {
+    "message": "New sites plus code that runs text or injects scripts"
+  },
+  "f_remote_combo_why": {
+    "message": "Together, these are the usual shape of “download code later, then run it”."
+  },
+  "f_obfuscated_new": {
+    "message": "New obfuscated files: {1}"
+  },
+  "f_obfuscated_new_why": {
+    "message": "Code written to be hard to read: hex names, escaped strings or long encoded blobs. Chrome Web Store policy does not allow obfuscated code."
+  },
+  "f_wasm_new": {
+    "message": "New WebAssembly files: {1}"
+  },
+  "f_wasm_new_why": {
+    "message": "WebAssembly is compiled code and is hard to inspect."
+  },
+  "f_minified_new": {
+    "message": "New minified files: {1}"
+  },
+  "f_minified_new_why": {
+    "message": "Compressed but ordinary code; listed for completeness."
+  },
+  "f_size_jump": {
+    "message": "Size more than doubled"
+  },
+  "f_size_jump_why": {
+    "message": "From {1} to {2} unpacked."
+  },
+  "f_background_changed": {
+    "message": "Background script changed"
+  },
+  "f_background_changed_why": {
+    "message": "From {1} to {2}."
+  },
+  "pattern_eval": {
+    "message": "eval()"
+  },
+  "pattern_eval_why": {
+    "message": "Runs a string as code."
+  },
+  "pattern_function_constructor": {
+    "message": "new Function()"
+  },
+  "pattern_function_constructor_why": {
+    "message": "Builds a function out of a string; the same risk as eval."
+  },
+  "pattern_string_timer": {
+    "message": "setTimeout / setInterval with a string"
+  },
+  "pattern_string_timer_why": {
+    "message": "Runs a string as code after a delay."
+  },
+  "pattern_document_write": {
+    "message": "document.write()"
+  },
+  "pattern_document_write_why": {
+    "message": "Writes raw HTML, scripts included, into a page."
+  },
+  "pattern_script_element": {
+    "message": "creates <script> elements"
+  },
+  "pattern_script_element_why": {
+    "message": "Can add scripts to a page, possibly from another server."
+  },
+  "pattern_remote_import_scripts": {
+    "message": "importScripts() from a URL"
+  },
+  "pattern_remote_import_scripts_why": {
+    "message": "Loads a script from a server into a worker."
+  },
+  "pattern_remote_dynamic_import": {
+    "message": "import() from a URL"
+  },
+  "pattern_remote_dynamic_import_why": {
+    "message": "Loads a JavaScript module from a server."
+  },
+  "pattern_execute_script": {
+    "message": "chrome.scripting.executeScript"
+  },
+  "pattern_execute_script_why": {
+    "message": "Injects scripts into your tabs. Common, but new in this extension."
+  },
+  "pattern_execute_script_code": {
+    "message": "executeScript with a code string"
+  },
+  "pattern_execute_script_code_why": {
+    "message": "Injects text into your tabs as code."
+  },
+  "pattern_dynamic_header_rules": {
+    "message": "rules that edit security headers while running"
+  },
+  "pattern_dynamic_header_rules_why": {
+    "message": "The code adds network rules at run time and names headers such as Content-Security-Policy."
+  },
+  "pattern_websocket": {
+    "message": "WebSocket connections"
+  },
+  "pattern_websocket_why": {
+    "message": "Opens a long-lived connection to a server."
+  },
+  "opt_doc_title": {
+    "message": "Settings · crxdiff"
+  },
+  "opt_title": {
+    "message": "Settings"
+  },
+  "opt_protection": {
+    "message": "Protection"
+  },
+  "opt_autoDisable": {
+    "message": "Turn off an extension when its update is high risk"
+  },
+  "opt_autoDisable_help": {
+    "message": "crxdiff switches it off and tells you; one click turns it back on. Extensions installed by policy cannot be turned off."
+  },
+  "opt_notify": {
+    "message": "Notify me about updates worth a look"
+  },
+  "opt_interval": {
+    "message": "Check for updates every"
+  },
+  "opt_h1": {
+    "message": "hour"
+  },
+  "opt_h3": {
+    "message": "3 hours"
+  },
+  "opt_h6": {
+    "message": "6 hours"
+  },
+  "opt_h12": {
+    "message": "12 hours"
+  },
+  "opt_h24": {
+    "message": "24 hours"
+  },
+  "opt_interval_help": {
+    "message": "crxdiff also checks as soon as Chrome reports that an extension was updated."
+  },
+  "opt_ignore": {
+    "message": "Ignore list"
+  },
+  "opt_ignore_help": {
+    "message": "Ticked extensions are not downloaded or compared."
+  },
+  "opt_data": {
+    "message": "Your data"
+  },
+  "opt_export": {
+    "message": "Export baselines (JSON)"
+  },
+  "opt_export_help": {
+    "message": "One file with what crxdiff keeps for each extension: manifest, file hashes and sizes, sites and patterns. No source code."
+  },
+  "opt_reset": {
+    "message": "Delete all crxdiff data"
+  },
+  "opt_reset_confirm": {
+    "message": "Delete all baselines and reports? New baselines are taken on the next check."
+  },
+  "opt_reset_done": {
+    "message": "All data deleted."
+  },
+  "opt_saved": {
+    "message": "Saved"
+  },
+  "opt_storage": {
+    "message": "Local storage in use: {1}"
+  },
+  "opt_privacy_title": {
+    "message": "Privacy"
+  },
+  "opt_privacy": {
+    "message": "crxdiff connects only to Google’s update servers (clients2.google.com and clients2.googleusercontent.com), and only to download extensions you already have. No account, no analytics, no telemetry."
+  },
+  "notif_title_high": {
+    "message": "High-risk update: {1}"
+  },
+  "notif_title_medium": {
+    "message": "Update worth a look: {1}"
+  },
+  "notif_disabled": {
+    "message": "crxdiff turned it off."
+  },
+  "notif_open": {
+    "message": "Open report"
+  },
+  "notif_reenable": {
+    "message": "Turn back on"
+  },
+  "skip_link": {
+    "message": "Skip to content"
+  },
+  "col_host": {
+    "message": "Host"
+  },
+  "col_file": {
+    "message": "First seen in"
+  }
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="opt_doc_title">crxdiff</title>
+  <link rel="icon" href="../icons/icon-32.png">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="../report/report.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip_link">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="../report/report.html"><img src="../icons/icon-32.png" alt="" width="24" height="24"><span>crxdiff</span></a>
+    <nav class="topnav">
+      <a href="../report/report.html" data-i18n="ov_title">Reports and extensions</a>
+      <a href="options.html" aria-current="page" data-i18n="popup_settings">Settings</a>
+    </nav>
+  </header>
+  <main id="main" class="page narrow" tabindex="-1">
+    <h1 class="ov-title" data-i18n="opt_title">Settings</h1>
+    <p class="saved" id="saved" role="status" aria-live="polite"></p>
+
+    <section class="sec" aria-labelledby="h-protection">
+      <div class="sec-head"><span class="sec-num" aria-hidden="true">01</span><h2 id="h-protection" data-i18n="opt_protection">Protection</h2></div>
+      <div class="field">
+        <input type="checkbox" id="autoDisable">
+        <div>
+          <label for="autoDisable" data-i18n="opt_autoDisable"></label>
+          <p class="help" data-i18n="opt_autoDisable_help"></p>
+        </div>
+      </div>
+      <div class="field">
+        <input type="checkbox" id="notify">
+        <div><label for="notify" data-i18n="opt_notify"></label></div>
+      </div>
+      <div class="field select-field">
+        <label for="interval" data-i18n="opt_interval"></label>
+        <select id="interval">
+          <option value="1" data-i18n="opt_h1"></option>
+          <option value="3" data-i18n="opt_h3"></option>
+          <option value="6" data-i18n="opt_h6"></option>
+          <option value="12" data-i18n="opt_h12"></option>
+          <option value="24" data-i18n="opt_h24"></option>
+        </select>
+        <p class="help" data-i18n="opt_interval_help"></p>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-ignore">
+      <div class="sec-head"><span class="sec-num" aria-hidden="true">02</span><h2 id="h-ignore" data-i18n="opt_ignore">Ignore list</h2></div>
+      <p class="sec-help" data-i18n="opt_ignore_help"></p>
+      <ul class="ignore" id="ignore"></ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-data">
+      <div class="sec-head"><span class="sec-num" aria-hidden="true">03</span><h2 id="h-data" data-i18n="opt_data">Your data</h2></div>
+      <p class="sec-help" id="usage"></p>
+      <div class="row">
+        <button class="btn" id="export" type="button" data-i18n="opt_export"></button>
+        <button class="btn danger" id="reset" type="button" data-i18n="opt_reset"></button>
+      </div>
+      <p class="help" data-i18n="opt_export_help"></p>
+      <h3 class="privacy-title" data-i18n="opt_privacy_title">Privacy</h3>
+      <p class="sec-help" data-i18n="opt_privacy"></p>
+    </section>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

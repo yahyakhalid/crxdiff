@@ -1,0 +1,144 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 28px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--card);
+  flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font: 700 18px var(--mono); }
+.brand img { border-radius: 5px; }
+.topnav { display: flex; gap: 18px; font-weight: 600; font-size: 14px; flex-wrap: wrap; }
+
+.page { max-width: 1080px; margin: 0 auto; padding: 24px 28px 64px; }
+.page:focus { outline: none; }
+
+/* ---- Report header ---- */
+.crumb { font-size: 14px; font-weight: 600; }
+.subject { display: flex; gap: 14px; align-items: center; margin: 14px 0 6px; }
+.subject .ext-icon { width: 44px; height: 44px; border-radius: 9px; }
+.subject h1 { font-size: 28px; letter-spacing: -0.3px; overflow-wrap: anywhere; }
+.subject-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; color: var(--muted); font-size: 14px; }
+.ext-id { font-family: var(--mono); font-size: 12.5px; direction: ltr; unicode-bidi: isolate; }
+
+.verdict {
+  margin: 20px 0 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  gap: 18px 28px;
+  align-items: start;
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  padding: 18px 22px;
+}
+.stamp {
+  display: inline-block;
+  font: 800 26px/1.1 var(--sans);
+  letter-spacing: -0.3px;
+  padding: 4px 14px 6px;
+  border: 3px solid currentColor;
+  border-radius: 8px;
+  transform: rotate(-1.5deg);
+}
+[dir="rtl"] .stamp { transform: rotate(1.5deg); }
+.stamp.high { color: var(--high); background: var(--high-bg); }
+.stamp.medium { color: var(--medium); background: var(--medium-bg); }
+.stamp.low { color: var(--low); background: var(--low-bg); }
+.stamp.none { color: var(--none); background: var(--none-bg); }
+.verdict-hint { margin: 12px 0 0; font-size: 15px; color: var(--ink-2); max-width: 60ch; }
+.verdict-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+.score { font-family: var(--mono); }
+.score-num { font-size: 40px; font-weight: 700; line-height: 1; }
+.score-unit { font-size: 14px; color: var(--muted); margin-inline-start: 6px; }
+.meter { position: relative; height: 12px; margin: 14px 0 6px; border-radius: 3px; background: linear-gradient(to right, var(--low-bg) 0 20%, var(--medium-bg) 20% 50%, var(--high-bg) 50% 100%); border: 1px solid var(--rule-strong); }
+[dir="rtl"] .meter { background: linear-gradient(to left, var(--low-bg) 0 20%, var(--medium-bg) 20% 50%, var(--high-bg) 50% 100%); }
+.meter-fill { position: absolute; inset-block: -4px; width: 4px; background: var(--ink); border-radius: 2px; }
+.meter-scale { position: relative; height: 1.4em; font-size: 11.5px; color: var(--muted); font-family: var(--mono); }
+.meter-scale span { position: absolute; top: 0; transform: translateX(-50%); direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .meter-scale span { transform: translateX(50%); }
+.meter-scale span:first-child { transform: none; }
+.meter-scale span:last-child { transform: none; inset-inline-start: auto !important; inset-inline-end: 0; }
+.scale-note { font: 12.5px/1.5 var(--sans); color: var(--muted); margin: 6px 0 0; }
+
+/* ---- Sections ---- */
+.sec { margin-top: 34px; }
+.sec-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1.5px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px; }
+.sec-num { font: 700 14px var(--mono); color: var(--muted); }
+.sec-head h2 { font-size: 20px; }
+.sec-help { color: var(--muted); font-size: 14px; margin: 0 0 10px; max-width: 75ch; }
+
+/* Ledger: one line per reason, points on the far side. */
+.ledger { list-style: none; margin: 0; padding: 0; }
+.ledger li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px dashed var(--rule-strong); }
+.ledger .glyph { font-size: 13px; padding-top: 3px; }
+.ledger .glyph.high { color: var(--high); }
+.ledger .glyph.medium { color: var(--medium); }
+.ledger .glyph.low { color: var(--low); }
+.ledger .glyph.info { color: var(--muted); }
+.ledger .what { font-weight: 700; overflow-wrap: anywhere; }
+.ledger .why { color: var(--ink-2); font-size: 14px; margin: 2px 0 0; overflow-wrap: anywhere; }
+.ledger .pts { font: 700 16px var(--mono); text-align: end; white-space: nowrap; direction: ltr; unicode-bidi: isolate; }
+.ledger .items { margin-top: 6px; }
+.ledger .total { border-bottom: none; border-top: 2px solid var(--ink); }
+.ledger .total .what { text-transform: uppercase; letter-spacing: 0.06em; font-size: 13px; }
+:lang(ar) .ledger .total .what { text-transform: none; letter-spacing: 0; font-size: 15px; }
+.ledger .total .pts { font-size: 20px; }
+
+/* Before/after access table */
+.access { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.access th, .access td { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.access th { font-size: 13px; color: var(--muted); font-weight: 600; width: 28%; }
+.access td .chip { margin: 2px 4px 2px 0; }
+.access .chip.added { background: var(--marker); color: var(--marker-ink); }
+.access .chip.removed { background: var(--del-bg); text-decoration: line-through; }
+
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl th, .tbl td { text-align: start; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tbl th { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.tbl td.path, .tbl td.host { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; direction: ltr; unicode-bidi: isolate; text-align: start; }
+[dir="rtl"] .tbl td.path, [dir="rtl"] .tbl td.host { text-align: right; }
+.tbl td.num { font-family: var(--mono); white-space: nowrap; text-align: end; }
+.tbl-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); }
+
+.file-summary { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 10px; font-size: 14px; }
+.more { margin-top: 10px; }
+
+/* manifest.json diff */
+.diff { margin: 0; background: var(--code-bg); border-radius: var(--radius); padding: 12px 0; overflow-x: auto; font: 13px/1.55 var(--mono); direction: ltr; text-align: left; }
+.diff span { display: block; padding: 0 14px; white-space: pre; }
+.diff .add { background: var(--add-bg); }
+.diff .del { background: var(--del-bg); }
+.diff .ctx { color: var(--muted); }
+.diff .gap { color: var(--muted); font-style: italic; }
+
+/* ---- Overview ---- */
+.ov-title { font-size: 28px; margin: 4px 0 18px; }
+.rlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rrow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-inline-start: 4px solid var(--none); border-radius: var(--radius); padding: 10px 14px; }
+.rrow.high { border-inline-start-color: var(--high); }
+.rrow.medium { border-inline-start-color: var(--medium); }
+.rrow.low { border-inline-start-color: var(--low); }
+.rrow .name { font-weight: 700; overflow-wrap: anywhere; }
+.rrow .sub { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; color: var(--muted); font-size: 13px; }
+.status-cell { display: flex; flex-direction: column; gap: 2px; }
+.status-name { font-weight: 600; }
+.status-name.watching { color: var(--low); }
+.status-name.error, .status-name.unavailable { color: var(--high); }
+.status-name.baseline-ahead, .status-name.baseline-behind { color: var(--medium); }
+.name-cell { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.name-cell span { overflow-wrap: anywhere; }
+
+@media (max-width: 720px) {
+  .verdict { grid-template-columns: 1fr; }
+  .page { padding: 18px 16px 48px; }
+  .topbar { padding: 10px 16px; }
+  .subject h1 { font-size: 23px; }
+  .rrow { grid-template-columns: auto minmax(0, 1fr); }
+  .rrow > :last-child { grid-column: 2; }
+  .access th { width: auto; display: block; border-bottom: none; padding-bottom: 0; }
+  .access td { display: block; }
+}

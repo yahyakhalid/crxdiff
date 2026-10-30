@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="extName">crxdiff</title>
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="mast">
+    <img class="logo" src="../icons/icon-48.png" alt="" width="32" height="32">
+    <div class="mast-text">
+      <p class="wordmark">crxdiff</p>
+      <p class="status small muted" id="status" aria-live="polite"></p>
+    </div>
+    <button class="btn primary" id="check" type="button" data-i18n="popup_checkNow">Check now</button>
+  </header>
+
+  <ul class="tally" id="tally"></ul>
+
+  <main>
+    <h1 class="section-title" data-i18n="popup_recent">Recent updates</h1>
+    <ol class="cards" id="cards"></ol>
+    <div class="empty-state" id="empty" hidden>
+      <p class="empty-title" data-i18n="popup_empty_title">No updates yet</p>
+      <p class="small muted" data-i18n="popup_empty_body"></p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <a id="all" href="../report/report.html" target="_blank" data-i18n="popup_allReports">Reports and extensions</a>
+    <a id="settings" href="../options/options.html" target="_blank" data-i18n="popup_settings">Settings</a>
+  </footer>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

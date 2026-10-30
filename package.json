@@ -1,0 +1,37 @@
+{
+  "name": "crxdiff",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension that shows what each update to your other extensions changed: new permissions, new sites in the code, risky patterns. Local only.",
+  "license": "MIT",
+  "author": "Yahya Khalid (https://github.com/yahyakhalid)",
+  "homepage": "https://github.com/yahyakhalid/crxdiff#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yahyakhalid/crxdiff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yahyakhalid/crxdiff/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "lint": "eslint .",
+    "build": "node scripts/build.mjs",
+    "check": "npm run lint && npm test && npm run build",
+    "compare": "node scripts/compare.mjs",
+    "noise": "node scripts/noise.mjs",
+    "vendor:fflate": "node scripts/vendor-fflate.mjs"
+  },
+  "devDependencies": {
+    "@puppeteer/browsers": "^2.13.2",
+    "esbuild": "^0.25.12",
+    "eslint": "^9.39.5",
+    "fflate": "^0.8.3",
+    "globals": "^17.13.0",
+    "puppeteer-core": "^24.43.1"
+  }
+}

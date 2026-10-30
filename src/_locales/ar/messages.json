@@ -1,0 +1,644 @@
+{
+  "extName": {
+    "message": "crxdiff: ماذا تغيّر في إضافاتك"
+  },
+  "extDescription": {
+    "message": "يعرض ما غيّره كل تحديث في إضافاتك: صلاحيات ومواقع جديدة وكود خطِر. لا يخرج شيء من جهازك."
+  },
+  "actionTitle": {
+    "message": "crxdiff: ماذا تغيّر في إضافاتك"
+  },
+  "level_high": {
+    "message": "خطر مرتفع"
+  },
+  "level_medium": {
+    "message": "يستحق نظرة"
+  },
+  "level_low": {
+    "message": "منخفض"
+  },
+  "level_none": {
+    "message": "لا شيء لافت"
+  },
+  "level_high_hint": {
+    "message": "هذا التحديث فيه تغييرات تتكرر في التحديثات الخبيثة. راجعه قبل أن تكمل استخدام الإضافة."
+  },
+  "level_medium_hint": {
+    "message": "هذا التحديث يمنح الإضافة قدرة أوسع. غالباً لا مشكلة في ذلك، لكن تأكد أنه يناسب عمل الإضافة."
+  },
+  "level_low_hint": {
+    "message": "تغييرات صغيرة نادراً ما تكون مشكلة وحدها."
+  },
+  "level_none_hint": {
+    "message": "تغيّر الكود، لكن لم يتغير شيء مما يراقبه crxdiff."
+  },
+  "popup_watching": {
+    "message": "الإضافات المراقَبة: {1}"
+  },
+  "popup_lastCheck": {
+    "message": "آخر فحص {1}"
+  },
+  "popup_never": {
+    "message": "لم يجرِ أي فحص بعد"
+  },
+  "popup_checkNow": {
+    "message": "افحص الآن"
+  },
+  "popup_checking": {
+    "message": "جارٍ الفحص…"
+  },
+  "popup_checkDone": {
+    "message": "انتهى الفحص"
+  },
+  "popup_recent": {
+    "message": "آخر التحديثات"
+  },
+  "popup_empty_title": {
+    "message": "لا تحديثات بعد"
+  },
+  "popup_empty_body": {
+    "message": "حفظ crxdiff نسخة أساس لكل إضافة. حين تتحدّث إحداها سترى هنا ما الذي تغيّر."
+  },
+  "popup_toReview": {
+    "message": "بانتظار المراجعة: {1}"
+  },
+  "popup_notChecked": {
+    "message": "خارج الفحص: {1}"
+  },
+  "popup_allReports": {
+    "message": "التقارير والإضافات"
+  },
+  "popup_settings": {
+    "message": "الإعدادات"
+  },
+  "open_report": {
+    "message": "افتح التقرير"
+  },
+  "auto_disabled": {
+    "message": "أوقفها crxdiff"
+  },
+  "reenable": {
+    "message": "أعِد تشغيلها"
+  },
+  "reenabled": {
+    "message": "أُعيد تشغيلها"
+  },
+  "mark_reviewed": {
+    "message": "تمت المراجعة"
+  },
+  "reviewed": {
+    "message": "رُوجع"
+  },
+  "points": {
+    "message": "{1} نقطة"
+  },
+  "partial_report": {
+    "message": "الصلاحيات فقط"
+  },
+  "version_label": {
+    "message": "النسخة"
+  },
+  "from_to_label": {
+    "message": "من {1} إلى {2}"
+  },
+  "report_doc_title": {
+    "message": "تقرير التحديث · crxdiff"
+  },
+  "report_why": {
+    "message": "لماذا هذا المستوى"
+  },
+  "report_why_none": {
+    "message": "لم يتغير شيء مما في قائمة المراقبة."
+  },
+  "report_total": {
+    "message": "المجموع"
+  },
+  "report_scale": {
+    "message": "من 20 نقطة فأكثر «يستحق نظرة»، ومن 50 فأكثر «خطر مرتفع»."
+  },
+  "report_access": {
+    "message": "الصلاحيات والوصول"
+  },
+  "report_access_none": {
+    "message": "لم تتغير الصلاحيات ولا الوصول إلى المواقع."
+  },
+  "report_sites": {
+    "message": "المواقع المذكورة في الكود"
+  },
+  "report_sites_none": {
+    "message": "لا مواقع جديدة."
+  },
+  "report_sites_help": {
+    "message": "أسماء مواقع وردت في روابط كاملة داخل سكربتات الإضافة وصفحاتها ولم تكن موجودة قبل التحديث. وجود الاسم في الكود لا يثبت أن الإضافة تتصل به."
+  },
+  "report_site_new": {
+    "message": "موقع جديد"
+  },
+  "report_site_known": {
+    "message": "موقع معروف"
+  },
+  "report_site_data": {
+    "message": "ملف بيانات"
+  },
+  "report_code": {
+    "message": "أنماط الكود"
+  },
+  "report_code_none": {
+    "message": "لم يظهر أي نمط خطِر لأول مرة."
+  },
+  "report_files": {
+    "message": "الملفات"
+  },
+  "report_files_summary": {
+    "message": "جديدة {1}، محذوفة {2}، متغيّرة {3}، دون تغيير {4}"
+  },
+  "report_manifest": {
+    "message": "manifest.json"
+  },
+  "report_manifest_same": {
+    "message": "لم يتغير manifest.json."
+  },
+  "report_notes": {
+    "message": "ملاحظات"
+  },
+  "report_size": {
+    "message": "الحجم بعد فك الضغط"
+  },
+  "report_files_count": {
+    "message": "عدد الملفات"
+  },
+  "report_detected": {
+    "message": "رُصد {1}"
+  },
+  "report_back": {
+    "message": "كل التقارير"
+  },
+  "report_not_found": {
+    "message": "هذا التقرير لم يعد موجوداً."
+  },
+  "report_show_all": {
+    "message": "اعرض الكل ({1})"
+  },
+  "report_reenable_failed": {
+    "message": "لم يسمح كروم بإعادة تشغيلها: {1}"
+  },
+  "file_added": {
+    "message": "جديد"
+  },
+  "file_removed": {
+    "message": "محذوف"
+  },
+  "file_changed": {
+    "message": "متغيّر"
+  },
+  "file_minified": {
+    "message": "مضغوط"
+  },
+  "file_obfuscated": {
+    "message": "يبدو مموّهاً"
+  },
+  "ov_doc_title": {
+    "message": "التقارير والإضافات · crxdiff"
+  },
+  "ov_title": {
+    "message": "التقارير والإضافات"
+  },
+  "ov_reports": {
+    "message": "تقارير التحديثات"
+  },
+  "ov_reports_none": {
+    "message": "لا تقارير بعد. يكتب crxdiff تقريراً كلما تحدّثت إضافة تحت المراقبة."
+  },
+  "ov_extensions": {
+    "message": "إضافاتك"
+  },
+  "ov_col_ext": {
+    "message": "الإضافة"
+  },
+  "ov_col_version": {
+    "message": "النسخة"
+  },
+  "ov_col_status": {
+    "message": "الحالة"
+  },
+  "ov_extensions_none": {
+    "message": "لا توجد إضافات أخرى مثبّتة."
+  },
+  "status_watching": {
+    "message": "تحت المراقبة"
+  },
+  "status_pending": {
+    "message": "لم تُفحص بعد"
+  },
+  "status_baseline_ahead": {
+    "message": "نسخة الأساس أحدث"
+  },
+  "status_baseline_ahead_help": {
+    "message": "المتجر يقدّم {1} وأنت تستخدم {2}. حين يثبّت كروم {1} سيعرض تقرير ذلك التحديث تغييرات الصلاحيات فقط."
+  },
+  "status_baseline_behind": {
+    "message": "بانتظار نسخة الأساس"
+  },
+  "status_baseline_behind_help": {
+    "message": "المتجر يقدّم {1}، وهي أقدم من نسختك {2}. سيحاول crxdiff لاحقاً."
+  },
+  "status_error": {
+    "message": "تعذّر التنزيل"
+  },
+  "status_error_help": {
+    "message": "الخطأ: {1}. سيحاول crxdiff مجدداً في الفحص القادم."
+  },
+  "status_unavailable": {
+    "message": "غير موجودة في المتجر"
+  },
+  "status_unavailable_help": {
+    "message": "لم يعد Chrome Web Store يقدّم هذه الإضافة. أحياناً تُزال الإضافات لمخالفتها سياسات المتجر."
+  },
+  "status_skipped": {
+    "message": "خارج الفحص"
+  },
+  "r_not_extension": {
+    "message": "التطبيقات والسمات لا تُفحص."
+  },
+  "r_unpacked": {
+    "message": "محمّلة من مجلد (وضع المطوّر)، فلا توجد نسخة في المتجر للمقارنة."
+  },
+  "r_policy": {
+    "message": "ثبّتتها سياسة مؤسستك."
+  },
+  "r_edge_store": {
+    "message": "من متجر Microsoft Edge، والمدعوم حالياً Chrome Web Store فقط."
+  },
+  "r_self_hosted": {
+    "message": "تتحدّث من خادمها الخاص ({1}) لا من Chrome Web Store."
+  },
+  "r_sideload": {
+    "message": "ثبّتها برنامج آخر على هذا الجهاز."
+  },
+  "r_other": {
+    "message": "ثُبّتت بطريقة لا يستطيع crxdiff فحصها."
+  },
+  "r_ignored": {
+    "message": "في قائمة التجاهل."
+  },
+  "n_store_ahead": {
+    "message": "المتجر يقدّم {1}، وهي أحدث من نسختك {2}. هذا التقرير يصف {1} التي سيثبّتها كروم قريباً."
+  },
+  "n_no_old_package": {
+    "message": "لم تكن لدى crxdiff حزمة النسخة {1}، لذا تظهر فقط تغييرات الصلاحيات التي يعرضها كروم."
+  },
+  "n_store_behind": {
+    "message": "المتجر يقدّم {1}، وهي أقدم من النسخة المثبّتة {2}، لذا تظهر تغييرات الصلاحيات فقط."
+  },
+  "n_auto_disabled": {
+    "message": "أوقف crxdiff هذه الإضافة لأن التحديث عالي الخطورة وخيار الإيقاف التلقائي مفعّل في الإعدادات."
+  },
+  "n_auto_disable_failed": {
+    "message": "الإيقاف التلقائي مفعّل، لكن كروم لا يسمح بإيقاف هذه الإضافة."
+  },
+  "n_warnings": {
+    "message": "في الحزمة عناصر غير معتادة: {1}"
+  },
+  "f_perm_added_silent": {
+    "message": "صلاحية جديدة دون أي تحذير: {1}"
+  },
+  "f_perm_added_silent_why": {
+    "message": "كروم لا يعرض أي تنبيه لهذه الصلاحية، فثُبّت التحديث دون أن يسألك."
+  },
+  "f_perm_added_warn": {
+    "message": "صلاحية جديدة: {1}"
+  },
+  "f_perm_added_warn_why": {
+    "message": "كروم يحذّر من هذه الصلاحية ويبقي الإضافة متوقفة حتى توافق عليها."
+  },
+  "f_perm_added_unknown": {
+    "message": "صلاحية جديدة: {1}"
+  },
+  "f_perm_added_unknown_why": {
+    "message": "crxdiff لا يعرف هذه الصلاحية بعد."
+  },
+  "f_perm_removed": {
+    "message": "صلاحيات أُزيلت: {1}"
+  },
+  "f_perm_removed_why": {
+    "message": "وصول أقل من قبل."
+  },
+  "f_host_added_broad": {
+    "message": "أصبحت تستطيع قراءة كل المواقع وتعديلها ({1})"
+  },
+  "f_host_added_broad_why": {
+    "message": "الوصول إلى كل المواقع يتيح للإضافة رؤية أي صفحة وتعديلها، بما فيها صفحات الدخول والنماذج."
+  },
+  "f_host_added": {
+    "message": "وصول إلى مواقع جديدة: {1}"
+  },
+  "f_host_added_why": {
+    "message": "أصبحت الإضافة تستطيع قراءة هذه المواقع وتعديلها."
+  },
+  "f_host_removed": {
+    "message": "وصول أُزيل إلى مواقع: {1}"
+  },
+  "f_host_removed_why": {
+    "message": "وصول أقل من قبل."
+  },
+  "f_optional_added": {
+    "message": "صلاحيات اختيارية جديدة: {1}"
+  },
+  "f_optional_added_why": {
+    "message": "قد تطلبها الإضافة منك لاحقاً."
+  },
+  "f_match_added_broad": {
+    "message": "أصبحت تشغّل سكربتاً في كل صفحة ({1})"
+  },
+  "f_match_added_broad_why": {
+    "message": "سكربت المحتوى في كل الصفحات يستطيع قراءة ما تراه وما تكتبه في أي موقع."
+  },
+  "f_match_added": {
+    "message": "تشغّل سكربتات في مواقع جديدة: {1}"
+  },
+  "f_match_added_why": {
+    "message": "سكربتات المحتوى فيها تعمل الآن في هذه الصفحات أيضاً."
+  },
+  "f_main_world": {
+    "message": "سكربت محتوى يعمل الآن داخل الصفحة نفسها"
+  },
+  "f_main_world_why": {
+    "message": "السكربتات في عالم «MAIN» تشارك الصفحة كودها بدل أن تعمل معزولة عنها."
+  },
+  "f_csp_changed": {
+    "message": "تغيّرت سياسة أمان المحتوى (CSP)"
+  },
+  "f_csp_changed_why": {
+    "message": "من «{1}» إلى «{2}»."
+  },
+  "f_csp_unsafe_eval": {
+    "message": "السياسة تسمح الآن بـ eval"
+  },
+  "f_csp_unsafe_eval_why": {
+    "message": "«unsafe-eval» يسمح للإضافة بتحويل نص إلى كود أثناء عملها، وهي طريقة شائعة لتشغيل كود يُجلب لاحقاً."
+  },
+  "f_csp_remote": {
+    "message": "السياسة تسمح الآن بسكربتات من خوادم أخرى"
+  },
+  "f_csp_remote_why": {
+    "message": "السكربتات التي تُحمَّل من خادم قد تتغير في أي وقت دون تحديث من المتجر."
+  },
+  "f_update_url_changed": {
+    "message": "تغيّر مصدر التحديثات"
+  },
+  "f_update_url_changed_why": {
+    "message": "من {1} إلى {2}. الإضافة التي تتحدّث من خادمها الخاص لا تمر بمراجعة المتجر."
+  },
+  "f_homepage_changed": {
+    "message": "تغيّر موقع الإضافة"
+  },
+  "f_homepage_changed_why": {
+    "message": "من {1} إلى {2}. قد يدل أحياناً على انتقال الإضافة إلى مالك جديد."
+  },
+  "f_author_changed": {
+    "message": "تغيّر المؤلف"
+  },
+  "f_author_changed_why": {
+    "message": "من {1} إلى {2}. قد يدل أحياناً على بيع الإضافة."
+  },
+  "f_name_changed": {
+    "message": "تغيّر الاسم"
+  },
+  "f_name_changed_why": {
+    "message": "من {1} إلى {2}."
+  },
+  "f_mv_changed": {
+    "message": "تغيّر إصدار manifest"
+  },
+  "f_mv_changed_why": {
+    "message": "من {1} إلى {2}."
+  },
+  "f_externally_connectable": {
+    "message": "أصبحت مواقع أو تطبيقات تستطيع مراسلتها: {1}"
+  },
+  "f_externally_connectable_why": {
+    "message": "المواقع أو الإضافات المذكورة تستطيع إرسال رسائل إليها مباشرة."
+  },
+  "f_dnr_header": {
+    "message": "تزيل ترويسات الأمان من المواقع"
+  },
+  "f_dnr_header_why": {
+    "message": "قواعد شبكة جديدة تحذف أو تستبدل ترويسات مثل Content-Security-Policy التي تحمي الصفحات من الكود المحقون. هذا ما فعلته QuickLens في فبراير 2026."
+  },
+  "f_pattern_new": {
+    "message": "جديد في الكود: {1}"
+  },
+  "f_sites_new": {
+    "message": "مواقع جديدة في الكود: {1}"
+  },
+  "f_sites_new_why": {
+    "message": "السكربتات تذكر الآن مواقع لم تذكرها من قبل. تأكد أنها للمطوّر أو لخدمات تستخدمها الإضافة."
+  },
+  "f_sites_new_data": {
+    "message": "مواقع جديدة في ملفات بيانات: {1}"
+  },
+  "f_sites_new_data_why": {
+    "message": "وردت في ملفات تسرد مواقع كثيرة، مثل قوائم الحظر، لذلك لا تُضاف لها نقاط."
+  },
+  "f_remote_combo": {
+    "message": "مواقع جديدة مع كود يشغّل نصوصاً أو يحقن سكربتات"
+  },
+  "f_remote_combo_why": {
+    "message": "اجتماعهما هو الشكل المعتاد لنمط «نزّل الكود لاحقاً ثم شغّله»."
+  },
+  "f_obfuscated_new": {
+    "message": "ملفات مموّهة جديدة: {1}"
+  },
+  "f_obfuscated_new_why": {
+    "message": "كود مكتوب ليصعب فهمه: أسماء ست عشرية أو نصوص مشفّرة أو كتل طويلة مرمّزة. سياسة Chrome Web Store لا تسمح بالكود المموّه."
+  },
+  "f_wasm_new": {
+    "message": "ملفات WebAssembly جديدة: {1}"
+  },
+  "f_wasm_new_why": {
+    "message": "WebAssembly كود مُترجَم ويصعب فحصه."
+  },
+  "f_minified_new": {
+    "message": "ملفات مضغوطة جديدة: {1}"
+  },
+  "f_minified_new_why": {
+    "message": "كود عادي لكنه مضغوط؛ مذكور للاكتمال."
+  },
+  "f_size_jump": {
+    "message": "الحجم تضاعف أكثر من مرة"
+  },
+  "f_size_jump_why": {
+    "message": "من {1} إلى {2} بعد فك الضغط."
+  },
+  "f_background_changed": {
+    "message": "تغيّر سكربت الخلفية"
+  },
+  "f_background_changed_why": {
+    "message": "من {1} إلى {2}."
+  },
+  "pattern_eval": {
+    "message": "eval()"
+  },
+  "pattern_eval_why": {
+    "message": "يشغّل نصاً على أنه كود."
+  },
+  "pattern_function_constructor": {
+    "message": "new Function()"
+  },
+  "pattern_function_constructor_why": {
+    "message": "يبني دالة من نص، وخطره مثل eval."
+  },
+  "pattern_string_timer": {
+    "message": "setTimeout / setInterval مع نص"
+  },
+  "pattern_string_timer_why": {
+    "message": "يشغّل نصاً على أنه كود بعد مهلة."
+  },
+  "pattern_document_write": {
+    "message": "document.write()"
+  },
+  "pattern_document_write_why": {
+    "message": "يكتب HTML خاماً في الصفحة، بما فيه السكربتات."
+  },
+  "pattern_script_element": {
+    "message": "ينشئ عناصر <script>"
+  },
+  "pattern_script_element_why": {
+    "message": "قد يضيف سكربتات إلى الصفحة، ربما من خادم آخر."
+  },
+  "pattern_remote_import_scripts": {
+    "message": "importScripts() من رابط"
+  },
+  "pattern_remote_import_scripts_why": {
+    "message": "يحمّل سكربتاً من خادم إلى عامل خلفي (worker)."
+  },
+  "pattern_remote_dynamic_import": {
+    "message": "import() من رابط"
+  },
+  "pattern_remote_dynamic_import_why": {
+    "message": "يحمّل وحدة JavaScript من خادم."
+  },
+  "pattern_execute_script": {
+    "message": "chrome.scripting.executeScript"
+  },
+  "pattern_execute_script_why": {
+    "message": "يحقن سكربتات في تبويباتك. شائع، لكنه جديد في هذه الإضافة."
+  },
+  "pattern_execute_script_code": {
+    "message": "executeScript مع نص كود"
+  },
+  "pattern_execute_script_code_why": {
+    "message": "يحقن نصاً في تبويباتك على أنه كود."
+  },
+  "pattern_dynamic_header_rules": {
+    "message": "قواعد تعدّل ترويسات الأمان أثناء العمل"
+  },
+  "pattern_dynamic_header_rules_why": {
+    "message": "الكود يضيف قواعد شبكة أثناء العمل ويذكر ترويسات مثل Content-Security-Policy."
+  },
+  "pattern_websocket": {
+    "message": "اتصالات WebSocket"
+  },
+  "pattern_websocket_why": {
+    "message": "يفتح اتصالاً مستمراً بخادم."
+  },
+  "opt_doc_title": {
+    "message": "الإعدادات · crxdiff"
+  },
+  "opt_title": {
+    "message": "الإعدادات"
+  },
+  "opt_protection": {
+    "message": "الحماية"
+  },
+  "opt_autoDisable": {
+    "message": "أوقف الإضافة إذا كان تحديثها عالي الخطورة"
+  },
+  "opt_autoDisable_help": {
+    "message": "يوقفها crxdiff ويخبرك، وتعيد تشغيلها بنقرة واحدة. الإضافات التي ثبّتتها سياسة المؤسسة لا يمكن إيقافها."
+  },
+  "opt_notify": {
+    "message": "أعلمني بالتحديثات التي تستحق نظرة"
+  },
+  "opt_interval": {
+    "message": "افحص التحديثات كل"
+  },
+  "opt_h1": {
+    "message": "ساعة"
+  },
+  "opt_h3": {
+    "message": "3 ساعات"
+  },
+  "opt_h6": {
+    "message": "6 ساعات"
+  },
+  "opt_h12": {
+    "message": "12 ساعة"
+  },
+  "opt_h24": {
+    "message": "24 ساعة"
+  },
+  "opt_interval_help": {
+    "message": "ويفحص crxdiff أيضاً فور أن يُبلغ كروم بتحديث إضافة."
+  },
+  "opt_ignore": {
+    "message": "قائمة التجاهل"
+  },
+  "opt_ignore_help": {
+    "message": "الإضافات المحددة لا تُنزَّل ولا تُقارن."
+  },
+  "opt_data": {
+    "message": "بياناتك"
+  },
+  "opt_export": {
+    "message": "صدّر نسخ الأساس (JSON)"
+  },
+  "opt_export_help": {
+    "message": "ملف واحد بما يحفظه crxdiff لكل إضافة: manifest، وبصمات الملفات وأحجامها، والمواقع والأنماط. بلا كود مصدري."
+  },
+  "opt_reset": {
+    "message": "احذف كل بيانات crxdiff"
+  },
+  "opt_reset_confirm": {
+    "message": "هل تحذف كل نسخ الأساس والتقارير؟ ستُحفظ نسخ أساس جديدة في الفحص القادم."
+  },
+  "opt_reset_done": {
+    "message": "حُذفت كل البيانات."
+  },
+  "opt_saved": {
+    "message": "حُفظ"
+  },
+  "opt_storage": {
+    "message": "التخزين المحلي المستخدم: {1}"
+  },
+  "opt_privacy_title": {
+    "message": "الخصوصية"
+  },
+  "opt_privacy": {
+    "message": "يتصل crxdiff فقط بخوادم التحديث التابعة لـ Google ‏(clients2.google.com وclients2.googleusercontent.com)، ولتنزيل الإضافات المثبّتة عندك فقط. لا حساب ولا تحليلات ولا قياس استخدام."
+  },
+  "notif_title_high": {
+    "message": "تحديث عالي الخطورة: {1}"
+  },
+  "notif_title_medium": {
+    "message": "تحديث يستحق نظرة: {1}"
+  },
+  "notif_disabled": {
+    "message": "أوقفها crxdiff."
+  },
+  "notif_open": {
+    "message": "افتح التقرير"
+  },
+  "notif_reenable": {
+    "message": "أعِد تشغيلها"
+  },
+  "skip_link": {
+    "message": "انتقل إلى المحتوى"
+  },
+  "col_host": {
+    "message": "الموقع"
+  },
+  "col_file": {
+    "message": "أول ملف ورد فيه"
+  }
+}

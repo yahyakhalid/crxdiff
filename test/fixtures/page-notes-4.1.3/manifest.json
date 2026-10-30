@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Page Notes",
+  "version": "4.1.3",
+  "description": "Keep short notes for any page.",
+  "homepage_url": "https://pagenotes.test/",
+  "permissions": ["storage", "contextMenus", "activeTab"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" },
+  "content_scripts": [{ "matches": ["https://*/*"], "js": ["content.js"], "run_at": "document_idle" }],
+  "default_locale": "en"
+}

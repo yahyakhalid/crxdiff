@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Page Notes",
+  "version": "4.2.0",
+  "description": "Keep short notes for any page.",
+  "homepage_url": "https://pagenotes.test/",
+  "permissions": ["storage", "contextMenus", "activeTab", "alarms", "scripting", "declarativeNetRequestWithHostAccess"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" },
+  "content_scripts": [{ "matches": ["https://*/*"], "js": ["content.js"], "run_at": "document_idle" }],
+  "declarative_net_request": {
+    "rule_resources": [{ "id": "compat", "enabled": true, "path": "rules/compat.json" }]
+  },
+  "default_locale": "en"
+}
