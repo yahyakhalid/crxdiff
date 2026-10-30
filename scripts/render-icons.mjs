@@ -12,12 +12,14 @@ const targets = [
   [32, big, 'src/icons/icon-32.png'],
   [48, big, 'src/icons/icon-48.png'],
   [128, big, 'src/icons/icon-128.png'],
-  [128, big, 'store/icon-128.png'],
+  // Web Store icon: 96x96 artwork with 16 px of transparent padding on each side.
+  [128, big, 'store/icon-128.png', 16],
 ];
-for (const [size, svg, out] of targets) {
+for (const [size, svg, out, pad = 0] of targets) {
   await page.setViewport({ width: size, height: size, deviceScaleFactor: 1 });
-  const sized = svg.replace('<svg ', `<svg width="${size}" height="${size}" `);
-  await page.setContent(`<!doctype html><style>html,body{margin:0;background:transparent}svg{display:block}</style>${sized}`);
+  const inner = size - 2 * pad;
+  const sized = svg.replace('<svg ', `<svg width="${inner}" height="${inner}" `);
+  await page.setContent(`<!doctype html><style>html,body{margin:0;background:transparent}svg{display:block;margin:${pad}px}</style>${sized}`);
   writeFileSync(out, await page.screenshot({ omitBackground: true, clip: { x: 0, y: 0, width: size, height: size } }));
   console.log(out);
 }

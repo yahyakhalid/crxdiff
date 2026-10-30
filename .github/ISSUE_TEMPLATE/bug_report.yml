@@ -1,0 +1,35 @@
+name: Bug report
+description: crxdiff crashed, showed something wrong, or did not notice an update.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: A screenshot of the popup or the report helps most.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: extension
+    attributes:
+      label: Extension involved (Chrome Web Store ID and versions), if any
+      placeholder: eimadpbcbfnmbkopoojfekhnkhdbieeh, 4.9.133 -> 4.9.134
+  - type: input
+    id: env
+    attributes:
+      label: crxdiff version, Chrome version, OS and UI language
+      placeholder: crxdiff 0.1.0, Chrome 156, Windows 11, Arabic
+    validations:
+      required: true
+  - type: textarea
+    id: errors
+    attributes:
+      label: Errors from the service worker console
+      description: chrome://extensions, then crxdiff, then "service worker", then Console.
+      render: text

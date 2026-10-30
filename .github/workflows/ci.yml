@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint, test and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: Build is reproducible
+        run: |
+          first=$(sha256sum dist/crxdiff-*.zip | cut -d' ' -f1)
+          npm run build
+          second=$(sha256sum dist/crxdiff-*.zip | cut -d' ' -f1)
+          test "$first" = "$second"
+      - name: Store zip has no tests, docs or dot files
+        run: |
+          unzip -l dist/crxdiff-*.zip
+          if unzip -Z1 dist/crxdiff-*.zip | grep -E '(^|/)(test|docs|\.)'; then exit 1; fi
+
+  test-os:
+    name: Tests on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test

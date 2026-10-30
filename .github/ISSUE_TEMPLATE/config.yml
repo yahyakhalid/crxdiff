@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security issue in crxdiff
+    url: https://github.com/yahyakhalid/crxdiff/security/advisories/new
+    about: Please report security problems in crxdiff privately.
+  - name: A malicious extension in the Chrome Web Store
+    url: https://support.google.com/chrome_webstore/answer/7508032
+    about: Report the extension to Google with "Report abuse" on its store page.

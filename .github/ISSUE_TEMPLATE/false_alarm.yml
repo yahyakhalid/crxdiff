@@ -1,0 +1,39 @@
+name: False alarm or missed change
+description: An ordinary update got a high score, or a suspicious one looked clean.
+labels: [scoring]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Which one?
+      options:
+        - False alarm (score too high)
+        - Missed change (score too low)
+    validations:
+      required: true
+  - type: input
+    id: extension
+    attributes:
+      label: Chrome Web Store ID and the two versions
+      placeholder: ddkjiahejlhfcafbddmgiahcphecmpfh, 2026.1021.1354 -> 2026.1026.1812
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: The report crxdiff showed
+      description: Level, points and reasons. A screenshot is fine.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why do you think the score is wrong?
+      description: For example a link to the release notes, or what the new code does.
+    validations:
+      required: true
+  - type: textarea
+    id: compare
+    attributes:
+      label: Output of `node scripts/compare.mjs old.crx new.crx` (optional)
+      render: text

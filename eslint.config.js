@@ -18,7 +18,7 @@ export default [
   },
   {
     // These scripts pass functions into the browser with puppeteer's evaluate().
-    files: ['scripts/screenshots.mjs', 'scripts/experiment/browser-run.mjs'],
+    files: ['scripts/screenshots.mjs', 'scripts/render-art.mjs', 'scripts/experiment/browser-run.mjs'],
     languageOptions: { globals: { chrome: 'readonly', document: 'readonly' } },
   },
   {
