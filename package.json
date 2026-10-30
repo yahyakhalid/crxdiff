@@ -18,7 +18,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/*.test.js",
     "lint": "eslint .",
     "build": "node scripts/build.mjs",
     "check": "npm run lint && npm test && npm run build",
